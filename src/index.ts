@@ -57,29 +57,7 @@ export async function infinity({ directory }: Options): Promise<void> {
       log.error(`${header}\n${footer}`);
 
       process.exit(1);
-    } else if (
-      !isAlreadyWrapped &&
-      !isInWrapDir &&
-      !name.startsWith('@infinitybots')
-    ) {
-      const header = `Whoops hang on chief!`;
-      const footer = `It looks like you are trying to install a package not related to Infinity Bot List. Unfortunately this is a custom module made to support only the Infinity Bot List Packages!`;
-
-      log.error(`${header}\n${footer}`);
-
-      process.exit(1);
-    } else if (
-      isAlreadyWrapped &&
-      isInWrapDir &&
-      !name.startsWith('@infinitybots')
-    ) {
-      const header = `Whoops hang on chief!`;
-      const footer = `It looks like you are trying to install a package not related to Infinity Bot List. Unfortunately this is a custom module made to support only the Infinity Bot List Packages!`;
-
-      log.error(`${header}\n${footer}`);
-
-      process.exit(1);
-    }
+    } 
 
     const integrity = isInWrapDir
       ? await getSsriFromFile(wrapFilePath)
