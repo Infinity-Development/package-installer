@@ -7,9 +7,6 @@ import { getSsriFromFile } from './lib/getSsriFromFile';
 import { getTimeBetween } from './lib/getTimeBetween';
 import { log } from './lib/consoleLogs';
 
-const dependencies = require('../package.json');
-const devdependencies = require('../package.json');
-
 interface Options {
   directory: string;
 }
@@ -23,7 +20,6 @@ export async function infinity({ directory }: Options): Promise<void> {
   let totalDeleted = 0;
 
   await mkdir(wrapDirPath, { recursive: true });
-
   const wrapDirContents = await readdir(wrapDirPath);
   const requiredWrapDirContents: Record<string, true> = {};
   const deletions: Promise<void>[] = [];
@@ -31,12 +27,9 @@ export async function infinity({ directory }: Options): Promise<void> {
   for (const key in lockfile.packages) {
     if (key === '') continue;
     if (!key.includes('node_modules')) continue;
-
     const record = lockfile.packages[key];
-
     if (record.link === true) continue;
     if (!record.resolved && !record.version) continue;
-
     const name = key.replace(/^.*node_modules\//g, '');
     const scopelessName = name.replace(/^.+\//, '');
     const resolved =
@@ -45,27 +38,21 @@ export async function infinity({ directory }: Options): Promise<void> {
     const wrapFileName = `${name.replace(/\//g, '_')}-${record.version}.tar`;
     const wrapFilePath = join(wrapDirPath, wrapFileName);
     const shortWrapFilePath = relative(directory, wrapFilePath);
-    const isInWrapDir = wrapDirContents.includes(wrapFileName);
     const spec = `${name}@${record.version}`;
-
+    const isInWrapDir = wrapDirContents.includes(wrapFileName);
     const isAlreadyWrapped = resolved.includes('node_infinity');
-
     if (isAlreadyWrapped && !isInWrapDir) {
-      const header = `${spec} points to ${resolved} which seems to be missing`;
-      const footer = `Delete your lockfile, reinstall, then run infinity again`;
-
-      log.error(`${header}\n${footer}`);
-
+      const header = `${spec} points to ${resolved} which is missing`;
+      const footer = `delete lockfile, reinstall, then run infinity again`;
+      log.error(`${header}\n  ${footer}`);
       process.exit(1);
-    } 
-
+    }
     const integrity = isInWrapDir
       ? await getSsriFromFile(wrapFilePath)
       : await fromNetwork(resolved, wrapFilePath);
 
     if (!isInWrapDir) {
       log.download(spec);
-
       totalAdded++;
     }
 
@@ -78,25 +65,21 @@ export async function infinity({ directory }: Options): Promise<void> {
     if (!requiredWrapDirContents[filename]) {
       const filePath = join(wrapDirPath, filename);
       const shortPath = relative(directory, filePath);
-
       log.deletion(shortPath);
-
       deletions.push(rm(filePath));
-
       totalDeleted++;
     }
   }
 
-  /** THIS IS IGNORED BY NPM >= 7 */
+  // this is ignored by npm >= 7
   lockfile.dependencies = undefined;
 
-  const nextLockFile = JSON.stringify(lockfile, null, 2);
-
-  await Promise.all([writeFile(lockfilePath, nextLockFile), deletions]);
+  const nextLockfile = JSON.stringify(lockfile, null, 2);
+  await Promise.all([writeFile(lockfilePath, nextLockfile), deletions]);
 
   console.log(
     [
-      '[Infinity Package Installer]:',
+      'infinity',
       color.green(`+${totalAdded}`),
       color.red(`-${totalDeleted}`),
       color.gray(getTimeBetween(startTime, new Date())),

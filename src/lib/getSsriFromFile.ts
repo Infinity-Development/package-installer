@@ -26,7 +26,7 @@ export function getSsriFromFile(filePath: string): Promise<string> {
 
     $read.on('error', (err) => {
       log.error(
-        `Error reading ${filePath}\n  delete this file and run infinity again`,
+        `error reading ${filePath}\n  delete this file and run infinity again`,
         err,
       );
       process.exit(1);

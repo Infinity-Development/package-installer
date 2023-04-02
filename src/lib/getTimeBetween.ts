@@ -8,7 +8,6 @@ export function getTimeBetween(dateFrom: Date, dateTo: Date): string {
   function msToTime(ms: number): string {
     const mins = msToMins(ms);
     const secs = msToSecs(ms);
-
     return pad(mins) + ':' + pad(secs);
   }
 
@@ -22,7 +21,6 @@ export function getTimeBetween(dateFrom: Date, dateTo: Date): string {
 
   function pad(value: number): string {
     const whole = Math.floor(value);
-
     return whole < 10 ? `0${whole}` : `${whole}`;
   }
 }

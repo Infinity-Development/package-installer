@@ -17,7 +17,7 @@ export const log = {
     console.log(color.blue(`i ${msg}`));
   },
   verbose(msg: string): void {
-    if (process.env.SHRINKPACK_LOG_LEVEL === 'verbose') {
+    if (process.env.INFINITY_LOG_LEVEL === 'verbose') {
       console.error(color.gray(`# ${msg}`));
     }
   },
