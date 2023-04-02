@@ -19,6 +19,9 @@ cd $TEST_DIR
 git init
 npm init --yes
 
+# NODE FIX
+sudo chown -R 1001:123 "/node_cache"
+
 # add common ignores
 echo "*.log.*" >> .gitignore
 echo "*.log" >> .gitignore
@@ -34,7 +37,7 @@ echo "cache=$TMPDIR/node_cache" >> .npmrc
 header "install some stuff"
 npm install --save-dev @telerik/eslint-config @types/core-js
 
-header "shrinkpack the project"
+header "infinity the project"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "look at cache contents"
@@ -54,7 +57,7 @@ npm install --save expect-more
 header "look again at cache contents"
 npm cache ls
 
-header "shrinkpack the project again"
+header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
@@ -68,7 +71,7 @@ npm uninstall @telerik/eslint-config
 header "look again at cache contents"
 npm cache ls
 
-header "shrinkpack the project again"
+header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
@@ -79,7 +82,7 @@ npm ci --offline
 header "install it back"
 npm install @telerik/eslint-config
 
-header "shrinkpack the project again"
+header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
@@ -90,7 +93,7 @@ npm ci --offline
 header "uninstall the other 2 packages"
 npm uninstall @types/core-js expect-more
 
-header "shrinkpack the project again"
+header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
