@@ -20,7 +20,7 @@ git init
 npm init --yes
 
 # NODE FIX
-sudo chown -R 1001:123 "/node_cache"
+node sudo chown -R 1001:123 "/node_cache"
 
 # add common ignores
 echo "*.log.*" >> .gitignore
