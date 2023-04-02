@@ -1,6 +1,6 @@
 {
     "name": "@infinitybots/installer",
-    "description": "NPM Package Installer for the Infinity Bot List Packages",
+    "description": "NPM Package Installer for the Infinity Bot List Packages!",
     "version": "0.0.3",
     "author": "Infinity Development",
     "main": "dist/index.js",

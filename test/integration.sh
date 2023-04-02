@@ -11,7 +11,7 @@ TEST_DIR="$TMPDIR/infinity-integration-test"
 
 # reset
 rm -rf $TEST_DIR
-npm cache clean --force 
+npm cache clear --force 
 
 # create new project
 mkdir $TEST_DIR
@@ -44,7 +44,7 @@ header "look at cache contents"
 npm cache ls
 
 header "do a clean install from offline"
-npm cache clean --force 
+npm cache clear --force 
 rm -rf node_modules
 npm ci --offline
 
@@ -61,7 +61,7 @@ header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
-npm cache clean --force 
+npm cache clear --force 
 rm -rf node_modules
 npm ci --offline
 
@@ -75,7 +75,7 @@ header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
-npm cache clean --force 
+npm cache clear --force 
 rm -rf node_modules
 npm ci --offline
 
@@ -86,7 +86,7 @@ header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
-npm cache clean --force 
+npm cache clear --force 
 rm -rf node_modules
 npm ci --offline
 
@@ -97,6 +97,6 @@ header "infinity the project again"
 node "$PROJECT_DIR/dist/bin.js" .
 
 header "do a clean install from offline"
-npm cache clean --force 
+npm cache clear --force 
 rm -rf node_modules
 npm ci --offline
