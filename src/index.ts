@@ -61,8 +61,6 @@ export async function infinity({ directory }: Options): Promise<void> {
       !isAlreadyWrapped &&
       !isInWrapDir &&
       !name.startsWith('@infinitybots')
-      && !dependencies.includes(name) ||
-      !devdependencies.includes(name)
     ) {
       const header = `Whoops hang on chief!`;
       const footer = `It looks like you are trying to install a package not related to Infinity Bot List. Unfortunately this is a custom module made to support only the Infinity Bot List Packages!`;
@@ -74,8 +72,6 @@ export async function infinity({ directory }: Options): Promise<void> {
       isAlreadyWrapped &&
       isInWrapDir &&
       !name.startsWith('@infinitybots')
-      && !dependencies.includes(name) ||
-      !devdependencies.includes(name)
     ) {
       const header = `Whoops hang on chief!`;
       const footer = `It looks like you are trying to install a package not related to Infinity Bot List. Unfortunately this is a custom module made to support only the Infinity Bot List Packages!`;
