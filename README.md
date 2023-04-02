@@ -1,4 +1,7 @@
 # @infinitybots/installer
+
+[![Prettier](https://github.com/Infinity-Development/package-installer/actions/workflows/prettier.yml/badge.svg)](https://github.com/Infinity-Development/package-installer/actions/workflows/prettier.yml) [![verify](https://github.com/Infinity-Development/package-installer/actions/workflows/verify.yaml/badge.svg)](https://github.com/Infinity-Development/package-installer/actions/workflows/verify.yaml)
+
 > [npm-shrinkwrap](https://docs.npmjs.com/cli/v9/commands/npm-shrinkwrap) based NPM Package Installer for the Infinity Bot List Packages
 
 ---
