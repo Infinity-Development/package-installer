@@ -46,21 +46,19 @@
         "dist"
     ],
     "keywords": [
-        "ci",
-        "cli",
         "dependencies",
         "dependency-manager",
+        "@infinitybots/installer",
+        "offline-mirror",
+        "package-json",
+        "package-lock",
         "npm-shrinkwrap",
         "dependency",
         "install",
         "lockfile",
         "npm",
-        "offline-mirror",
-        "package-json",
-        "package-lock",
         "package",
         "pnpm",
-        "@infinitybots/installer",
         "yarn"
       ]
 }
